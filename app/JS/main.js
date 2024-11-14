@@ -2,6 +2,7 @@ import "../CSS/style.css";
 //get data
 //promises
 //show data
+import "https://api.spotify.com/v1/artists/";
 async function getData() {
   //"tries" code and if it does not achieve a certain output, it returns an error
   try {
