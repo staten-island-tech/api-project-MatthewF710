@@ -7,7 +7,7 @@ async function getData() {
   //"tries" code and if it does not achieve a certain output, it returns an error
   try {
     //returns a promise
-    const response = await fetch("https://valorant-api.com/v1/agents");
+    const response = await fetch("");
     //guard clause
     if (response.status != 200) {
       throw new Error(response);
