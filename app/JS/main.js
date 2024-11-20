@@ -2,28 +2,42 @@ import "../CSS/style.css";
 //get data
 //promises
 //show data
-import "";
+import { DOMSelectors } from "./DOMSelectors.js";
 async function getData() {
   //"tries" code and if it does not achieve a certain output, it returns an error
+  const cardarray = []; //all the cards
+  let page = 1;
   try {
-    //returns a promise
-    const response = await fetch("");
-    //guard clause
-    if (response.status != 200) {
-      throw new Error(response);
-    } else {
-      //convert promise to json
-      const data = await response.json();
-      console.log(data.data);
-      //this is UNIQUE to THIS API
-      data.data.array.forEach((agent) =>
-        document
-          .querySelector("div")
-          .insertAdjacentHTML("afterbegin", `<h1>${agent.displayName}</h1>`)
-      );
+    for (i = page; page > 0; page++) {
+      //FIX THIS LATER im lazy
+      //returns a promise
+      const response = await fetch("https://api.pokemontcg.io/v2/cards");
+      //guard clause
+      console.log(response.status);
+      if (response.status != 200) {
+        throw new Error("Cant find data");
+      } else {
+        //convert promise to json
+        const carddata = await response.json();
+        //adds cards to main array
+        carddata.data.forEach((card) => {
+          cardarray.push(card);
+        });
+      }
+      //make smth for checking when cards reach max it breaks
     }
   } catch (error) {
-    alert("couldnt find that agent");
+    alert("couldnt find that card");
   }
+  return cardarray;
 }
 getData();
+function cardCreator(x) {
+  x.forEach((card) =>
+    DOMSelectors.container.insertAdjacentHTML(
+      "afterbegin",
+      `<h1>${card.name}</h1>`
+    )
+  );
+}
+cardCreator(getData());
