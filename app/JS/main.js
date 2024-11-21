@@ -3,17 +3,47 @@ import "../CSS/style.css";
 //promises
 //show data
 import { DOMSelectors } from "./DOMSelectors.js";
-async function getData() {
+async function createDropdowns() {
+  let setarray = [];
+  try {
+    //returns a promise
+    const response = await fetch("https://api.pokemontcg.io/v2/sets/");
+    //guard clause
+    if (response.status != 200) {
+      throw new Error("Cant find data");
+    } else {
+      DOMSelectors.body.insertAdjacentElement(
+        "beforeend",
+        `<form action="">
+        <label for="sets"></label>
+        <select name="sets" id="setsselector">
+        </select>
+      </form>`
+      );
+      const setdata = await response.json();
+      setdata.data.forEach((sets) => {
+        setarray.push(sets);
+      });
+    }
+  } catch (error) {
+    alert("couldnt find that card");
+  }
+  setarray.forEach((set) =>
+    DOMSelectors.dropdown.insertAdjacentHTML(
+      "afterbegin",
+      `<option value="${set.name}"></option>`
+    )
+  );
+}
+async function getData(currentarray) {
   //"tries" code and if it does not achieve a certain output, it returns an error
   let cardarray = []; //all the cards
-  let page = 1;
   try {
-    // for (i = page; page < maxpage#; page++) { FIX THIS LATER im lazy
     //returns a promise
-    const response = await fetch("https://api.pokemontcg.io/v2/cards");
+    const response = await fetch(
+      `https://api.pokemontcg.io/v2/sets/${currentarray}`
+    );
     //guard clause
-    console.log(response.status);
-    console.log("e");
     if (response.status != 200) {
       throw new Error("Cant find data");
     } else {
@@ -24,9 +54,7 @@ async function getData() {
         cardarray.push(card);
       });
     }
-    //make smth for checking when cards reach max it breaks
   } catch (error) {
-    // }
     alert("couldnt find that card");
   }
   cardarray.forEach((card) =>
@@ -36,4 +64,4 @@ async function getData() {
     )
   );
 }
-getData();
+createDropdowns();
