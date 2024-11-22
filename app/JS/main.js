@@ -12,14 +12,6 @@ async function createDropdowns() {
     if (response.status != 200) {
       throw new Error("Cant find data");
     } else {
-      DOMSelectors.body.insertAdjacentElement(
-        "beforeend",
-        `<form action="">
-        <label for="sets"></label>
-        <select name="sets" id="setsselector">
-        </select>
-      </form>`
-      );
       const setdata = await response.json();
       setdata.data.forEach((sets) => {
         setarray.push(sets);
@@ -30,7 +22,7 @@ async function createDropdowns() {
   }
   setarray.forEach((set) =>
     DOMSelectors.dropdown.insertAdjacentHTML(
-      "afterbegin",
+      "beforeend",
       `<option value="${set.name}"></option>`
     )
   );
