@@ -3,8 +3,8 @@ import "../CSS/style.css";
 //promises
 //show data
 import { DOMSelectors } from "./DOMSelectors.js";
+let setarray = [];
 async function createDropdowns() {
-  let setarray = [];
   try {
     //returns a promise
     const response = await fetch("https://api.pokemontcg.io/v2/sets/");
@@ -24,19 +24,16 @@ async function createDropdowns() {
     console.log(set.name);
     DOMSelectors.dropdown.insertAdjacentHTML(
       "beforeend",
-      `<option value="${set.name}"></option>`
+      `<option value="${set.name}">${set.name}</option>`
     );
   });
-  return setarray;
 }
 async function getData(currentarray) {
   //"tries" code and if it does not achieve a certain output, it returns an error
   let cardarray = []; //all the cards
   try {
     //returns a promise
-    const response = await fetch(
-      `https://api.pokemontcg.io/v2/sets/${currentarray}`
-    );
+    const response = await fetch(`https://api.pokemontcg.io/v2/cards`);
     //guard clause
     if (response.status != 200) {
       throw new Error("Cant find data");
@@ -64,4 +61,5 @@ async function creatingCards() {
     const currentset = selectedset.name;
   });
 }
-document.addEventListener("");
+// document.addEventListener("");
+createDropdowns();

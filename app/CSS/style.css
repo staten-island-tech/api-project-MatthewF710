@@ -9,7 +9,7 @@ html, body * {
     box-sizing: border-box;
 }
 html {
-    background-image: url();
+    background-image: url(../public/pokemonbg.jpg);
 }
 :root {
     --purple: #AB196F;
@@ -25,14 +25,6 @@ html {
     --h3: 4.5rem;
     --p: 2.5rem;
 }
-.btn {
-    height: 5rem;
-    width: 15rem;
-    font-size: 3rem;
-    background-color: rgb(230, 255, 138);
-    border-radius: 1.5rem;
-    text-shadow:  5px 2.5px rgb(213, 213, 213)
-}
 .container{
     width: 95vw;
     margin: auto;
@@ -44,12 +36,8 @@ html {
     grid-row-gap: 2vw;
     padding: 1rem;
 }
-button{
-    transition: background-color 0.5s ease, transform 0.5s ease
-}
+
 button:hover{
-    background-color: rgb(135, 135, 135);
-    transform: scale(1.1);
     cursor: pointer;
 }
 @media (max-width: 1290px) {
