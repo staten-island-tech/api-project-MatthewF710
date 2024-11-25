@@ -20,12 +20,14 @@ async function createDropdowns() {
   } catch (error) {
     alert("couldnt find that card");
   }
-  setarray.forEach((set) =>
+  setarray.forEach((set) => {
+    console.log(set.name);
     DOMSelectors.dropdown.insertAdjacentHTML(
       "beforeend",
       `<option value="${set.name}"></option>`
-    )
-  );
+    );
+  });
+  return setarray;
 }
 async function getData(currentarray) {
   //"tries" code and if it does not achieve a certain output, it returns an error
@@ -56,4 +58,10 @@ async function getData(currentarray) {
     )
   );
 }
-createDropdowns();
+async function creatingCards() {
+  const sets = await createDropdowns();
+  DOMSelectors.dropdown.addEventListener("change", (selectedset) => {
+    const currentset = selectedset.name;
+  });
+}
+document.addEventListener("");
