@@ -55,11 +55,21 @@ async function getData(currentarray) {
     )
   );
 }
-async function creatingCards() {
-  const sets = await createDropdowns();
-  DOMSelectors.dropdown.addEventListener("change", (selectedset) => {
-    const currentset = selectedset.name;
+async function createSetData() {
+  await createDropdowns();
+  const response = await fetch("https://api.pokemontcg.io/v2/sets/");
+  const carddata = await response.json();
+  DOMSelectors.dropdown.addEventListener("change", function () {
+    const selectedset = DOMSelectors.dropdown.value;
+    const selectedcard = carddata.data.filter(
+      (findset) => findset.name == selectedset
+    );
+    DOMSelectors.container.innerHTML = "";
+    DOMSelectors.container.insertAdjacentHTML(
+      "afterbegin",
+      `<h1>${selectedcard[0].name}</h1>`
+    );
   });
 }
-// document.addEventListener("");
 createDropdowns();
+createSetData();

@@ -1,6 +1,6 @@
 const DOMSelectors = {
   body: document.querySelector(".body"),
-  container: document.querySelector(".div"),
+  container: document.querySelector(".cardtainer"),
   dropdown: document.querySelector(".select"),
 };
 export { DOMSelectors };
