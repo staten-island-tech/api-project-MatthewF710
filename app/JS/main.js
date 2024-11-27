@@ -67,7 +67,28 @@ async function createSetData() {
     DOMSelectors.container.innerHTML = "";
     DOMSelectors.container.insertAdjacentHTML(
       "afterbegin",
-      `<h1>${selectedcard[0].name}</h1>`
+      `<div class="card bg-base-100 w-96 shadow-xl">
+      <figure>
+        <img
+          src="${selectedcard[0].images.logo}"
+          alt="setimage" />
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">
+          ${selectedcard[0].name}
+          <div class="badge badge-secondary">${selectedcard[0].series}</div>
+        </h2>
+        <p>
+          Legality Conditions: <br/>
+          Unlimited: ${selectedcard[0].legalities.unlimited} <br/>
+          Expanded: ${selectedcard[0].legalities.expanded}
+        </p>
+        <div class="card-actions justify-end">
+          <div class="badge badge-outline">Release: ${selectedcard[0].releasedate}</div>
+          <div class="badge badge-outline">Card Total: ${selectedcard[0].total}</div>
+        </div>
+      </div>
+    </div>`
     );
   });
 }
