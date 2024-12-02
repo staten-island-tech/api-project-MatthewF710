@@ -1,10 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./index.html", // Ensure this is included
-    "./JS/**/*.js", // Ensure JS files are included
-    "./CSS/**/*.css", // If there are other CSS files
-    "./public/**/*.html", // If there are dynamic HTML files
+    "./index.html",
+    "./JS/**/*.js",
+    "./CSS/**/*.css",
+    "./public/**/*.html", //had to fix content cause it was wrong
   ],
   theme: {
     screens: {
@@ -16,7 +16,8 @@ module.exports = {
     colors: {
       blue: "#1fb6ff",
       darkBlue: "#0e4c75",
-      purple: "#7e5bef",
+      purple: "#7e8bef",
+      red: "#ff7169",
       pink: "#ff49db",
       CardBG: "#ff7043",
       green: "#13ce66",

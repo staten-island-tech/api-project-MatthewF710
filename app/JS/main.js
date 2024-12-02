@@ -90,7 +90,7 @@ async function createSetData() {
       //for going through cuz some sets are missing the attribute
       DOMSelectors.container.insertAdjacentHTML(
         "afterbegin",
-        `<div class="card bg-CardBG w-110 shadow-xl text-TextColor">
+        `<div class="card bg-CardBG w-80 shadow-xl text-TextColor p-3">
         <figure>
           <img
             src="${selectedcard[0].images.logo}"
