@@ -4,12 +4,8 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Pokemon TCG Data</title>
   </head>
-<<<<<<< Updated upstream
-  <body>
-    <script type="module" src="/main.js"></script>
-=======
   <body class="bg-MainBG min-h-screen">
     <div class="bg-TopbarBG p-4 shadow-md">
       <div class="container mx-auto flex justify-between items-center">
@@ -18,21 +14,17 @@
         </a>
         <h1 class="text-center text-yellow underline">Pokemon TCG (minus cards)</h1>
         <select class="select select-bordered w-full max-w-xs bg-darkBlue" id="typedropdown">
-          <option value="unselectable" disabled selected>What do you want to view by?</option>
+          <option value="unselectable" disabled selected>Do you want to look through sets or rarities?</option>
           <option value="sets">Sets</option>
           <option value="rarities">Rarities</option>
         </select>
       </div>
     </div>
+    <div class="optioncontainer"></div>
     <div class="div">
-      <select class="select select-bordered w-full max-w-xs" id="setdropdown">
-        <option value="unselectable" disabled selected>Pick a set</option>
-      </select>
-    </div>
     <div class="container mx-auto py-8" id="cardtainer">
       
     </div>
     <script type="module" src="./JS/main.js"></script>
->>>>>>> Stashed changes
   </body>
 </html>

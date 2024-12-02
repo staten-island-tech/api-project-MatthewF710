@@ -4,7 +4,17 @@ import "../CSS/style.css";
 //show data
 import { DOMSelectors } from "./DOMSelectors.js";
 let setarray = [];
+let dropdown = [];
 async function createDropdowns() {
+  DOMSelectors.optioncontainer.innerHTML = "";
+  DOMSelectors.container.innerHTML = "";
+  DOMSelectors.optioncontainer.insertAdjacentHTML(
+    "afterbegin",
+    `<select class="select select-bordered w-full max-w-xs" id="setdropdown">
+      <option value="unselectable" disabled selected>Pick a set</option>
+    </select>`
+  );
+  dropdown = document.querySelector("#setdropdown");
   try {
     //returns a promise
     const response = await fetch("https://api.pokemontcg.io/v2/sets/");
@@ -22,9 +32,9 @@ async function createDropdowns() {
   }
   setarray.forEach((set) => {
     console.log(set.name);
-    DOMSelectors.dropdown.insertAdjacentHTML(
+    dropdown.insertAdjacentHTML(
       "beforeend",
-      `<option value="${set.name}">${set.name}</option>`
+      `<option value="${set.name}">${set.name}</option>` //creates all dropdown functions
     );
   });
 }
@@ -32,19 +42,20 @@ async function createSetData() {
   await createDropdowns();
   const response = await fetch("https://api.pokemontcg.io/v2/sets/");
   const carddata = await response.json();
-  DOMSelectors.dropdown.addEventListener("change", function () {
-    const selectedset = DOMSelectors.dropdown.value;
+  dropdown.addEventListener("change", function () {
+    const selectedset = dropdown.value; //chosen set
     const selectedcard = carddata.data.filter(
-      (findset) => findset.name == selectedset
+      (findset) => findset.name == selectedset //finds set data
     );
     DOMSelectors.container.innerHTML = "";
     if (
       selectedcard[0].legalities.expanded == "Legal" ||
       selectedcard[0].legalities.expanded == undefined
     ) {
+      //for going through cuz some sets are missing the attribute
       DOMSelectors.container.insertAdjacentHTML(
         "afterbegin",
-        `<div class="card bg-CardBG w-96 shadow-xl text-TextColor">
+        `<div class="card bg-CardBG w-96 shadow-xl">
         <figure>
           <img
             src="${selectedcard[0].images.logo}"
@@ -110,13 +121,13 @@ async function createRarities() {
       const carddata = await response.json();
       //adds cards to main array
       carddata.data.forEach((card) => {
-        cardarray.push(card);
+        raritycard.push(card);
       });
     }
   } catch (error) {
     alert("couldnt find that card");
   }
-  cardarray.forEach((card) =>
+  raritycard.forEach((card) =>
     DOMSelectors.container.insertAdjacentHTML(
       "afterbegin",
       `<h1>${card.name}</h1>`
@@ -126,11 +137,10 @@ async function createRarities() {
 document.addEventListener("DOMContentLoaded", () => {
   // Call  when the DOM is fully loaded
   DOMSelectors.maindropdown.addEventListener("change", () => {
-    console.log(DOMSelectors.maindropdown.value);
     if (DOMSelectors.maindropdown.value == "sets") {
-      createSetData();
+      createSetData(); //if set itll set up for sets
     } else {
-      console.log("filler");
+      console.log("filler"); //if not itll set up for rarities
     }
   });
 });

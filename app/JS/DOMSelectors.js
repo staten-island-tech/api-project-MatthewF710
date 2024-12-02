@@ -1,7 +1,7 @@
 const DOMSelectors = {
   body: document.querySelector(".body"),
   container: document.querySelector("#cardtainer"),
-  dropdown: document.querySelector("#setdropdown"),
+  optioncontainer: document.querySelector(".optioncontainer"),
   maindropdown: document.querySelector("#typedropdown"),
 };
 export { DOMSelectors };
