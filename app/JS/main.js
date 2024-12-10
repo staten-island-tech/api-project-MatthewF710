@@ -212,14 +212,14 @@ async function createRarities() {
           const response = await fetch("https://api.pokemontcg.io/v2/cards");
           const cardcountdata = await response.json();
           let totalpages = Math.round(cardcountdata.totalCount / 250); //takes much less loading but relies on updated api
-          let currentpage = Math.random() * totalpages + 1;
+          let currentpage = Math.round(Math.random() * totalpages + 1);
           const newresponse = await fetch(
             `https://api.pokemontcg.io/v2/cards?page=${currentpage}`
           );
           const realcarddata = await newresponse.json();
           realcarddata.data.forEach((card) => {
             const rarityCheck = card?.rarity || card?.data?.rarity;
-            if (currentrarity === rarityCheck) {
+            if (currentrarity == rarityCheck) {
               //looked ? thingy up, basically, checks if they exist
               raritycard.push(card); //adds cards to main array
             }
@@ -257,6 +257,7 @@ async function createRarities() {
               </div>`
             )
           );
+          raritycard = [];
         } else {
           DOMSelectors.container.innerHTML = "";
           alert(
