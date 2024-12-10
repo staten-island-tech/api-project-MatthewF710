@@ -4,25 +4,29 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/pf-tempesta-seven" rel="stylesheet">
     <title>Pokemon TCG Data</title>
   </head>
   <body class="bg-MainBG min-h-screen">
-    <div class="bg-TopbarBG p-4 shadow-md">
-      <div class="container mx-auto flex justify-between items-center">
-        <a href="/" class="absolute top-0 left-0"> 
-          <img src="./public/tcgicon.png" alt="Pokemon TCG Logo" class="max-w-12 min-w-3"> 
+    <div class="bg-TopbarBG p-[1rem] shadow-md">
+      <div class="container h-[4rem]">
+        <a href="/" class="absolute top-[1rem] left-[.5rem] animate-bounce"> 
+          <img src="./public/tcgicon.png" alt="Pokemon TCG Logo" class="h-[4.5rem]"> 
         </a>
-        <h1 class="font-Pokemon Solid text-center text-yellow underline">Pokemon TCG (minus cards)</h1>
-        <select class="select select-bordered w-full max-w-xs bg-red text-TextColor p-.5" id="typedropdown">
+        <h1 class="absolute top-[1.5rem] left-[8rem] font-pokeFont text-center text-yellow text-5xl tracking-widest lg:text-5xl md:text-4xl sm:text-3xl">Pokemon TCG (minus cards)</h1>
+        <select class="select select-bordered w-auto font-pixelFont bg-red text-TextColor p-[.5rem] absolute top-[1rem] right-[1rem] lg:mt-0 md:mt-[0.1rem] sm:mt-[0.2rem]" id="typedropdown">
           <option value="unselectable" disabled selected>Do you want to look through sets or rarities?</option>
           <option value="sets">Sets</option>
           <option value="rarities">Rarities</option>
         </select>
       </div>
     </div>
-    <div class="flex flex-row pt-6 flex-col items-center w-full" id="optioncontainer"></div>
-    <div class="div">
-    <div class="container flex flex-row justify-center py-8" id="cardtainer"></div>
+    <div class="flex flex-row pt-[1rem] flex-col items-center min-w-screen" id="optioncontainer"></div>
+    <div class="flex flex row pt-[2rem] items-center justify-center w-full" id="raritydisplay"></div>
+    <div class="flex flex-wrap justify-center gap-4 py-[1.5rem] min-w-screen lg:gap-5 md:gap-4 sm:gap-3" id="cardtainer">
+      <img src="pikachuloading.gif" alt="pikachu running as a placeholder">
+    </div>
     <script type="module" src="./JS/main.js"></script>
   </body>
 </html>

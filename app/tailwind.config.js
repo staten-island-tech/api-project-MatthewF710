@@ -8,12 +8,13 @@ module.exports = {
   ],
   theme: {
     screens: {
-      sm: "480px",
-      md: "768px",
-      lg: "976px",
+      sm: "724px",
+      md: "1082px",
+      lg: "1290px",
       xl: "1440px",
     },
     colors: {
+      // special colors
       blue: "#1fb6ff",
       darkBlue: "#0e4c75",
       purple: "#7e8bef",
@@ -26,6 +27,11 @@ module.exports = {
       MainBG: "#8492a6",
       modernBg: "#f5f5f5",
       TextColor: "#000000",
+    },
+    fontFamily: {
+      // for fonts
+      pokeFont: ['"Pokemon Solid"', "sans-serif"],
+      pixelFont: ['"PF Tempesta Seven"', "sans-serif"],
     },
   },
   plugins: [require("daisyui")],
