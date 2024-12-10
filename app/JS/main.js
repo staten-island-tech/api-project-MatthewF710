@@ -232,7 +232,7 @@ async function createRarities() {
           raritycard.forEach((card) =>
             DOMSelectors.container.insertAdjacentHTML(
               "afterbegin",
-              `<div class="w-[15%] h-auto bg-CardBG border border-TextColor rounded-lg shadow-md overflow-hidden md:w-[15%]sm:w-[30%]">
+              `<div class="w-[15%] h-auto bg-CardBG border border-TextColor rounded-lg shadow-md overflow-hidden md:w-[15%] sm:w-[30%] xs:w-[40%]">
                 <img
                 src="${card.images?.small}"
                 alt="${card.name} card art"
